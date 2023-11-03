@@ -79,9 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   isVisible = !isVisible;
                                 });
                               },
-                              icon: Icon((isVisible)
-                                  ? Icons.remove_red_eye
-                                  : Icons.visibility_off_rounded)),
+                              icon: const Icon(Icons.remove_red_eye)),
                           prefixIcon: const Icon(Icons.lock),
                           label: const Text('Password'))),
                   const SizedBox(height: 40),

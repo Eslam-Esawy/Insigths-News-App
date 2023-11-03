@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:insights_news_app/core/appcolors.dart";
 import "package:insights_news_app/feature/home/home_view.dart";
 import "package:insights_news_app/feature/auth/register_view.dart";
+import "package:insights_news_app/feature/profile/profile_view.dart";
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -73,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                   onTap: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const HomeView(),
+                        builder: (context) => const ProfileView(),
                       ));
                     }
                   },

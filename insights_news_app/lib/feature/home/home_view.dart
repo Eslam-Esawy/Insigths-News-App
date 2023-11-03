@@ -1,3 +1,4 @@
+import "package:flutter_svg/svg.dart";
 import "package:flutter/material.dart";
 import "package:insights_news_app/core/appcolors.dart";
 import "package:insights_news_app/feature/news/news_view.dart";
@@ -23,8 +24,8 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[cuurentIndex],
-        bottomNavigationBar: BottomNavigationBar(
+      body: screens[cuurentIndex],
+      bottomNavigationBar: BottomNavigationBar(
           currentIndex: cuurentIndex,
           onTap: (value) {
             setState(() {
@@ -33,55 +34,51 @@ class _HomeViewState extends State<HomeView> {
           },
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.scaffoldBG,
-          selectedItemColor: AppColors.lemonade,
-          showSelectedLabels: false,
           showUnselectedLabels: false,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          showSelectedLabels: false,
+          items: [
+            //Home Icon
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications), label: 'Notifications'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
+              icon: SvgPicture.asset('assets/Home.svg'),
+              label: 'Home',
+              activeIcon: SvgPicture.asset(
+                'assets/Home.svg',
+                colorFilter:
+                    ColorFilter.mode(AppColors.lemonade, BlendMode.srcIn),
+              ),
+            ),
 
-          // items: [
-          //   BottomNavigationBarItem(
+            //Search Icon
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/iconamoon_search-duotone.svg'),
+                label: 'Search',
+                activeIcon: SvgPicture.asset(
+                  'assets/iconamoon_search-duotone.svg',
+                  colorFilter:
+                      ColorFilter.mode(AppColors.lemonade, BlendMode.srcIn),
+                )),
 
-          //       //Home Icon
-          //       icon: Image.asset(
-          //         'assets/Group.svg',
-          //         width: 19.573,
-          //         height: 21.151,
-          //       ),
-          //       label: 'Home'),
+            //Notification Icon
+            BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/Notification.svg'),
+                label: 'Notifications',
+                activeIcon: SvgPicture.asset(
+                  'assets/Notification.svg',
+                  colorFilter:
+                      ColorFilter.mode(AppColors.lemonade, BlendMode.srcIn),
+                )),
 
-          //   //Search Icon
-          //   BottomNavigationBarItem(
-          //       icon: Image.asset(
-          //         'assets/iconamoon:search-duotone.svg',
-          //         width: 17,
-          //         height: 17,
-          //       ),
-          //       label: 'Search'),
-
-          //   //Notification Icon
-          //   BottomNavigationBarItem(
-          //       icon: Image.asset(
-          //         'assets/Notification.svg',
-          //         width: 17.305,
-          //         height: 17.305,
-          //       ),
-          //       label: 'Notification'),
-
-          //   //Profile Icon
-          //   BottomNavigationBarItem(
-          //       icon: Image.asset(
-          //         'assets/Profile.svg',
-          //         width: 18.266,
-          //         height: 18.266,
-          //       ),
-          //       label: 'Profile'),
-          // ]),
-        ));
+            //Profile Icon
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/Profile.svg'),
+              label: 'Profile',
+              activeIcon: SvgPicture.asset(
+                'assets/Profile.svg',
+                colorFilter:
+                    ColorFilter.mode(AppColors.lemonade, BlendMode.srcIn),
+              ),
+            ),
+          ]),
+    );
   }
 }
