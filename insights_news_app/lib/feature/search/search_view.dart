@@ -1,5 +1,5 @@
-import "package:flutter_svg/svg.dart";
 import "package:flutter/material.dart";
+import "package:flutter_svg/svg.dart";
 import "package:insights_news_app/core/appcolors.dart";
 import "package:insights_news_app/feature/news/widgets/News_list_view.dart";
 

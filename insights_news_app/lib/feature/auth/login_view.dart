@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:insights_news_app/core/appcolors.dart";
-import "package:insights_news_app/feature/home/home_view.dart";
 import "package:insights_news_app/feature/auth/register_view.dart";
 import "package:insights_news_app/feature/profile/profile_view.dart";
 

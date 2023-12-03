@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:insights_news_app/core/appcolors.dart";
-import "package:insights_news_app/feature/auth/login_view.dart";
+import "package:insights_news_app/feature/upload_view.dart";
+import "package:insights_news_app/core/app_local_storage.dart";
+import "package:insights_news_app/feature/home/home_view.dart";
+
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -14,9 +17,11 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const LoginView(),
-      ));
+      AppLocal.getBool(AppLocal.isUpload).then((value) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => value? const HomeView() : const UploadView()
+        ));
+      });
     });
   }
 

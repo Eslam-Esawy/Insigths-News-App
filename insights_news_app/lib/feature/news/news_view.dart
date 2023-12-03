@@ -1,8 +1,10 @@
+import "dart:io";
 import "widgets/News_list_view.dart";
 import "package:flutter/material.dart";
 import "package:buttons_tabbar/buttons_tabbar.dart";
 import 'package:carousel_slider/carousel_slider.dart';
 import "package:insights_news_app/core/appcolors.dart";
+import "package:insights_news_app/core/app_local_storage.dart";
 import "package:smooth_page_indicator/smooth_page_indicator.dart";
 
 class NewsView extends StatefulWidget {
@@ -29,13 +31,29 @@ class _NewsViewState extends State<NewsView> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Hello, Eslam',
-                          style: TextStyle(
-                            color: AppColors.white,
-                            fontSize: 17.305,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        FutureBuilder(
+                          future: AppLocal.getCached(AppLocal.nameKey),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                'Hello, ${snapshot.data!.split(' ').first}',
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 17.305,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              );
+                            } else {
+                              return Text(
+                                'Hello, User',
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 17.305,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              );
+                            }
+                          },
                         ),
                         const SizedBox(height: 1.73),
                         const Text(
@@ -54,9 +72,21 @@ class _NewsViewState extends State<NewsView> {
 
                       //dah b2a child 3shan a3ml sora tanya foo2 l soora elly mahtoota dy
                       //ya3ny foo2 l gholaaf l abyad dah
-                      child: const CircleAvatar(
-                        radius: 19.5,
-                        backgroundImage: AssetImage('assets/Esawy.jpg'),
+                      child: FutureBuilder(
+                        future: AppLocal.getCached(AppLocal.imageKey),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return CircleAvatar(
+                              radius: 19.5,
+                              backgroundImage: FileImage(File(snapshot.data!)),
+                            );
+                          } else {
+                            return const CircleAvatar(
+                              radius: 19.5,
+                              backgroundImage: AssetImage('assets/user.jpg'),
+                            );
+                          }
+                        },
                       ),
                     )
                   ],

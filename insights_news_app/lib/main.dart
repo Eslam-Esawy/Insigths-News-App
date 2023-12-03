@@ -14,20 +14,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
+            appBarTheme: AppBarTheme(
+                backgroundColor: AppColors.scaffoldBG, elevation: 0.0),
             scaffoldBackgroundColor: AppColors.scaffoldBG,
             inputDecorationTheme: InputDecorationTheme(
               labelStyle: TextStyle(color: AppColors.grey),
               prefixIconColor: AppColors.lemonade,
               suffixIconColor: AppColors.lemonade,
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: AppColors.lemonade)),
+                borderRadius: BorderRadius.circular(15),
+                // borderSide: BorderSide(color: AppColors.lemonade)
+              ),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: AppColors.lemonade)),
+                borderRadius: BorderRadius.circular(15),
+                // borderSide: BorderSide(color: AppColors.lemonade)
+              ),
               errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: AppColors.lemonade)),
+                borderRadius: BorderRadius.circular(15),
+                // borderSide: BorderSide(color: AppColors.lemonade)
+              ),
             )),
         debugShowCheckedModeBanner: false,
         home: const SplashView());
